@@ -1,5 +1,6 @@
 package entity;
 
+import entity.Enum.NumberRoomEnum;
 import lombok.Builder;
 
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.Data;
 public class Room {
 
     int id;
-    NumberRoom number;
+    NumberRoomEnum number;
     QuantityBed quantityBed;
     CategoryRoom categoryRoom;
     int floor;

@@ -21,20 +21,20 @@ public class OrderServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
 
 
-        var userInfoId = Integer.parseInt(req.getParameter("userId"));
-        var roomId = Integer.parseInt(req.getParameter("roomId"));
+//        var userInfoId = Integer.parseInt(req.getParameter("userId"));
+//        var roomId = Integer.parseInt(req.getParameter("roomId"));
         var beginTime = LocalDateTime.parse(req.getParameter("beginTime"));
         var endTime = LocalDateTime.parse(req.getParameter("endTime"));
         var condition = ConditionEnum.valueOf(req.getParameter("condition"));
         var message = req.getParameter("message");
 
+  //      userInfoId, roomId,
 
-
-        orderService.delete(id);
+                orderService.delete(id);
         orderService.findById(id);
         orderService.findAll();
-        orderService.save(userInfoId, roomId, beginTime, endTime, condition, message);
-        orderService.update(id, userInfoId, roomId, beginTime, endTime, condition, message);
+        orderService.save(beginTime, endTime, condition, message);
+        orderService.update(id,beginTime, endTime, condition, message);
     }
 
 }

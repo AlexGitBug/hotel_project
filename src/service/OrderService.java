@@ -46,18 +46,18 @@ public class OrderService {
 
     }
 
-    public void update(int id, int userId, int roomId, LocalDateTime beginTime, LocalDateTime endTime,
+    public void update(int id, LocalDateTime beginTime, LocalDateTime endTime,
                        ConditionEnum condition, String message) {
         var orderHotel = orderDao.findById(id);
-        var user = UserInfo.builder()
-                .id(userId)
-                .build();
-        var room = Room.builder()
-                .id(roomId)
-                .build();
+//        var user = UserInfo.builder()
+//                .id(userId)
+//                .build();
+//        var room = Room.builder()
+//                .id(roomId)
+//                .build();
         orderHotel.ifPresent(order -> {
-            order.setUserInfoId(user);
-            order.setRoomId(room);
+//            order.setUserInfoId(user);
+//            order.setRoomId(room);
             order.setBeginTimeOfTheOrder(beginTime);
             order.setEndTimeOfTheOrder(endTime);
             order.setCondition(condition);
@@ -67,17 +67,17 @@ public class OrderService {
         });
     }
 
-    public void save(int userId, int roomId, LocalDateTime beginTime, LocalDateTime endTime, ConditionEnum condition, String message) {
+    public void save(LocalDateTime beginTime, LocalDateTime endTime, ConditionEnum condition, String message) {
 
-        var user = UserInfo.builder()
-                .id(userId)
-                .build();
-        var room = Room.builder()
-                .id(roomId)
-                .build();
+//        var user = UserInfo.builder()
+//                .id(userId)
+//                .build();
+//        var room = Room.builder()
+//                .id(roomId)
+//                .build();
         var order = Order.builder()
-                .userInfoId(user)
-                .roomId(room)
+//                .userInfoId(user)
+//                .roomId(room)
                 .beginTimeOfTheOrder(beginTime)
                 .endTimeOfTheOrder(endTime)
                 .condition(condition)

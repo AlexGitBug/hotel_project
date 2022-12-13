@@ -4,6 +4,7 @@ package service;
 import dao.RoomDao;
 import dto.RoomDto;
 import entity.*;
+import entity.Enum.NumberRoomEnum;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class RoomService {
                 .collect(toList());
 
     }
-    public  void save(NumberRoom number, int quantityBed, int categoryRoom, int floor, int dayPrice, RoomStatusEnum status) {
+    public  void save(NumberRoomEnum number, int quantityBed, int categoryRoom, int floor, int dayPrice, RoomStatusEnum status) {
         var qua = QuantityBed.builder()
                 .id(quantityBed)
                 .build();
@@ -64,7 +65,7 @@ public class RoomService {
 
     }
 
-    public void update(int id, NumberRoom number, int quantityBed, int categoryRoom, int floor, int dayPrice, RoomStatusEnum status) {
+    public void update(int id, NumberRoomEnum number, int quantityBed, int categoryRoom, int floor, int dayPrice, RoomStatusEnum status) {
         var roomHotel = roomDao.findById(id);
         var qua = QuantityBed.builder()
                 .id(quantityBed)

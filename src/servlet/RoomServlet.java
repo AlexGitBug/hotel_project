@@ -1,6 +1,7 @@
 package servlet;
 
 import entity.*;
+import entity.Enum.NumberRoomEnum;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,7 +27,7 @@ public class RoomServlet extends HttpServlet {
         int dayPrice = Integer.parseInt(req.getParameter("dayPrice"));
         var status = RoomStatusEnum.valueOf(req.getParameter("status"));
 
-        var numberRoom = NumberRoom.valueOf(req.getParameter("numberRoom"));
+        var numberRoom = NumberRoomEnum.valueOf(req.getParameter("numberRoom"));
 
 
         roomService.delete(id);

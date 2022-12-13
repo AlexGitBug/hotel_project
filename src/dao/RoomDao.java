@@ -1,6 +1,8 @@
 package dao;
 
+
 import entity.*;
+import entity.Enum.NumberRoomEnum;
 import exception.DaoException;
 import util.ConnectionManager;
 
@@ -81,7 +83,7 @@ public class RoomDao {
                 .build();
         return Room.builder()
                 .id(resultSet.getInt("id"))
-                .number(NumberRoom.valueOf(resultSet.getObject("number_room", String.class)))
+                .number(NumberRoomEnum.valueOf(resultSet.getObject("number_room", String.class)))
                 .quantityBed(quantityBed)
                 .categoryRoom(categoryRoom)
                 .floor(resultSet.getObject("floor", Integer.class))
