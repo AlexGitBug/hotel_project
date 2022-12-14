@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.CategoryRoomService;
+import util.JspHelper;
 
 import java.io.IOException;
 
@@ -16,14 +17,23 @@ public class CategoryRoomServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int id = Integer.parseInt(req.getParameter("id"));
-        String kind = req.getParameter("kind");
+        var id = Integer.parseInt(req.getParameter("id"));
+        var kind = req.getParameter("kind");
+        req.setAttribute("categoryroom", categoryRoomService.findById(id));
+        req.setAttribute("categoryroom", categoryRoomService.findAll());
 
-        categoryRoomService.delete(id);
-        categoryRoomService.findAll();
-        categoryRoomService.findById(id);
-        categoryRoomService.saveCategoryRoom(kind);
-        categoryRoomService.updateRoom(id, kind);
+        req.getRequestDispatcher(JspHelper.getPath("categoryroom"))
+                .forward(req, resp);
+
+
+
+
+//
+//        categoryRoomService.delete(id);
+//        categoryRoomService.findAll();
+    //    categoryRoomService.findById(id);
+//        categoryRoomService.saveCategoryRoom(kind);
+//        categoryRoomService.updateRoom(id, kind);
 
     }
 
