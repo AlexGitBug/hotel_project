@@ -20,12 +20,12 @@ public class CategoryRoomServlet extends HttpServlet {
         var id = Integer.parseInt(req.getParameter("id"));
         var kind = req.getParameter("kind");
         req.setAttribute("categoryroom", categoryRoomService.findById(id));
-        req.setAttribute("categoryroom", categoryRoomService.findAll());
+    //    req.setAttribute("categoryroomlist", categoryRoomService.findAll());
 
         req.getRequestDispatcher(JspHelper.getPath("categoryroom"))
                 .forward(req, resp);
-
-
+    //    req.getRequestDispatcher(JspHelper.getPath("categoryroomfindall"))
+      //          .forward(req, resp);
 
 
 //
