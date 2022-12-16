@@ -20,18 +20,19 @@ public class RoomDao {
 
     private static final String FIND_ALL_SQL = """
             SELECT room.id,
-                   number_room,
-                   qb.id,
-                   qb.capacity,
-                   cr.id,
-                   cr.kind,
+                   number,
                    floor,
                    day_price,
                    status
                 FROM room
-                join quantity_bed qb on qb.id = room.quantity_bed_id
-                join category_room cr on cr.id = room.category_room_id 
             """;
+
+//    qb.id,
+//    qb.capacity,
+//    cr.id,
+//    cr.kind,
+//    join quantity_bed qb on qb.id = room.quantity_bed_id
+//    join category_room cr on cr.id = room.category_room_id
 
     private static final String FIND_BY_ID_SQL = FIND_ALL_SQL + """
             WHERE room.id = ?
@@ -73,19 +74,19 @@ public class RoomDao {
     }
 
     private Room buildRoom(ResultSet resultSet) throws SQLException {
-        var quantityBed = QuantityBed.builder()
-                .id(resultSet.getObject("id", Integer.class))
-                .capacity(resultSet.getObject("capacity", Integer.class))
-                .build();
-        var categoryRoom = CategoryRoom.builder()
-                .id(resultSet.getObject("id", Integer.class))
-                .kind(resultSet.getObject("kind", String.class))
-                .build();
+//        var quantityBed = QuantityBed.builder()
+//                .id(resultSet.getObject("id", Integer.class))
+//                .capacity(resultSet.getObject("capacity", Integer.class))
+//                .build();
+//        var categoryRoom = CategoryRoom.builder()
+//                .id(resultSet.getObject("id", Integer.class))
+//                .kind(resultSet.getObject("kind", String.class))
+//                .build();
         return Room.builder()
                 .id(resultSet.getInt("id"))
-                .number(NumberRoomEnum.valueOf(resultSet.getObject("number_room", String.class)))
-                .quantityBed(quantityBed)
-                .categoryRoom(categoryRoom)
+                .number(NumberRoomEnum.valueOf(resultSet.getObject("number", String.class)))
+//                .quantityBed(quantityBed)
+//                .categoryRoom(categoryRoom)
                 .floor(resultSet.getObject("floor", Integer.class))
                 .dayPrice(resultSet.getObject("day_price", Integer.class))
                 .status(RoomStatusEnum.valueOf(resultSet.getObject("status", String.class)))

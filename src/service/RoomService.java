@@ -21,8 +21,8 @@ public class RoomService {
                 .map(room -> RoomDto.builder()
                         .id(room.getId())
                         .description("""
-                               %s - %d - %d - %d - %s
-                            """.formatted(room.getNumber(), room.getQuantityBed().getId(), room.getCategoryRoom().getId(),
+                               %s - %d - %d - %s
+                            """.formatted(room.getNumber(), room.getDayPrice(),
                                 room.getFloor(), room.getStatus()))
                         .build())
                 .collect(toList());
@@ -34,8 +34,8 @@ public class RoomService {
                 .map(room -> RoomDto.builder()
                         .id(room.getId())
                         .description("""
-                            %s - %d - %d - %d - %d - %s
-                            """.formatted(room.getNumber(), room.getQuantityBed().getId(), room.getCategoryRoom().getId(),
+                            %s - %d - %d - %s
+                            """.formatted(room.getNumber(),
                         room.getFloor(), room.getDayPrice(), room.getStatus()))
                         .build())
                 .collect(toList());
